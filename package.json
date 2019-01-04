@@ -1,0 +1,50 @@
+{
+  "name": "huseum",
+  "version": "1.0.0",
+  "description": "Hueseum",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs276/huseum.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs276/huseum/issues"
+  },
+  "homepage": "https://github.com/cs276/huseum#readme",
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "async-each-series": "^1.1.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cross-fetch": "^2.2.3",
+    "crypto": "^1.0.1",
+    "css-loader": "^1.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.0.0",
+    "express-session": "^1.15.6",
+    "express-vue": "^5.7.1",
+    "image-webpack-loader": "^4.6.0",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.2.0",
+    "package.json": "^2.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sqlite3": "^4.0.3",
+    "url-loader": "^1.1.2",
+    "vue": "^2.5.17",
+    "vue-cli": "^2.9.6",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^15.4.2",
+    "webpack": "^4.25.1"
+  }
+}

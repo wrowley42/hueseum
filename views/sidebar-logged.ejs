@@ -1,0 +1,41 @@
+<div class="sidenav">
+    <a href="/"><img class="logo" src="/logo.png"></img></a>
+    <div class="welcomeMessage">
+        Hello,
+        <div class="welcomeUser"><%- username %></div>
+    </div>
+    <p class="logout"><a href="/logout">Sign out</a><p>
+    <div class="navGroup">
+        <table>
+            <tr class="navTitleAddRow">
+                <th class="navThTitle"><h2 class="sidenavTitle">Your recent colors</h2></th>
+                <th class="navThBtn"><button id="searchBtn2" class="navAdd">+</button></th>
+            </tr>
+        </table>
+        <% if(recentColors.length > 0) { %>
+          <div class="colorButtonsColumn">
+              <% recentColors.forEach(color => { %>
+                <a href="/search/hex/<%- color %>"><button class="outlinebutton" style="border: 1px solid #<%- color %>">#<%- color %></button></a>
+              <% }); %>
+          </div>
+        <% } else { %>
+            <div class ="navBlank">
+                Looks like you haven't searched any colors recently! Search now.
+            </div>
+        <% } %>
+    </div>
+    <div class="navGroup">
+        <table>
+            <tr class="navTitleAddRow">
+                <th class="navThTitle"><h2 class="sidenavTitle">Featured uploads</h2></th>
+                <th class="navThBtn"><button id="searchBtn3" class="navAdd">+</button></th>
+            </tr>
+        </table>
+          <div class="recentUploadsBlock">
+                  <a href="/search/upload/monalisa/Mona_Lisa"><p>The Mona Lisa</p></a>
+                  <a href="/search/upload/girlwithpearlearring/The_Girl_with_the_Pearl_Earring"><p>The Girl with the Pearl Earring</p></a>
+                  <a href="/search/upload/starrynight/Starry_Night"><p>Starry Night</p></a>
+          </div>
+    </div>
+    <div class="center"><button id="searchBtn4" class="searchButton">Start exploring</button></div>
+</div>

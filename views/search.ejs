@@ -1,0 +1,72 @@
+
+<div id="searchModal1" class="modal">
+    <div class="modal-content">
+        <span class="searchClose close">&times;</span>
+        <img class="logo logoCenter" src="/logo.png"></img>
+        <form class="searchHexForm" action="/hexcodeSearch" method="post">
+              <label for="hexcodeSearch"> Hex Code Value </label></br>
+              <input class="searchInput" id="hexcodeSearch" type="text" class="inputtext" name="hexcode"></input>
+                <input type="submit" class="searchFormButton" value="Search by hex"></input>
+
+        </form>
+        <form class="searchHexForm" action="/keywordSearch" method="post">
+              <label for="keywordSearch"> Artwork title or artist </label></br>
+              <input class="searchInput" id="keywordSearch" type="text" class="inputtext" name="keyword"></input>
+                <input type="submit" class="searchFormButton" value="Search by title or artist"></input>
+        </form>
+
+        <form class="searchHexForm" ref='uploadForm' id='uploadForm' action='/uploadSearch' method='post' encType="multipart/form-data">
+            <label for="uploadSearch"> Artwork title or artist </label></br>
+             <input id="uploadSearch" type="file" name="upload" accept="image/*">
+             <input type='submit' class="submitbtn" value='Search by image' />
+        </form>
+
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+
+    // Get the modal
+    var searchModal = document.getElementById("searchModal1");
+
+    // Get the button that opens the modal
+    var searchBtn2 = document.getElementById("searchBtn2");
+    var searchBtn3 = document.getElementById("searchBtn3");
+    var searchBtn4 = document.getElementById("searchBtn4");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("searchClose")[0];
+
+    // When the user clicks the button, open the modal
+    searchBtn2.onclick = function() {
+        searchModal.style.display = "block";
+    }
+    searchBtn3.onclick = function() {
+        searchModal.style.display = "block";
+    }
+    searchBtn4.onclick = function() {
+        searchModal.style.display = "block";
+    }
+
+    // If homescreen button exists, then use it
+    if (document.getElementById("searchBtn")) {
+      var searchBtn = document.getElementById("searchBtn");
+      searchBtn.onclick = function() {
+          searchModal.style.display = "block";
+      }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        searchModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == searchModal) {
+            searchModal.style.display = "none";
+        }
+    }
+  }
+</script>

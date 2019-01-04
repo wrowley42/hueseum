@@ -1,0 +1,76 @@
+<%- include('header') %>
+
+<% if(username) { %>
+    <%- include('sidebar-logged') %>
+<% } else { %>
+    <%- include('sidebar-unlogged') %>
+<% } %>
+
+<div class="main">
+    <div class="artHeader">
+        <div class="artworkTitleArt">
+            <h4 class="artworkTitle"><%= paintingInfo[0].title %></h4>
+            <h3 class=artworkArtist><%= paintingInfo[0].artist %></h3>
+        </div>
+            <a href="/painting/<%- paintingInfo[0].painting_id %>/favorite">
+
+            <table class="artFavButton">
+                <tr>
+                    <th class="navThTitle"><p class="addPaintingText">Add painting to library</p></th>
+                    <th class="navThBtn"><button class="navAdd addPaintingButton">+</button></th>
+                </tr>
+            </table>
+          </a>
+
+    </div>
+
+    <table class="artworkInfo">
+        <tr class="artworkImageInfoRow">
+            <th class="artworkImageColumn">
+                <img class="artworkImage" src="<%= paintingInfo[0].image_url %>"></img>
+            </th>
+            <th class="artworkInfoColumn">
+                <table>
+                    <tr>
+                          <th class="artInfoTitle">Year of Creation</th>
+                          <th><p>
+                            <%- paintingInfo[0].year %>
+                            <% if (!paintingInfo[0].year) { %>
+                              No information available
+                            <% } %>
+                          </p></th>
+                    </tr>
+                    <tr>
+                          <th class="artInfoTitle">Accession Year</th>
+                          <th><p>
+                            <%- paintingInfo[0].accession %>
+                            <% if (!paintingInfo[0].accession) { %>
+                              No information available
+                            <% } %>
+                          </p></th>
+
+                    </tr>
+                    <tr>
+                          <th class="artInfoTitle">Provenance</th>
+                          <th><p>
+                            <%- paintingInfo[0].provenance %>
+                            <% if (!paintingInfo[0].provenance) { %>
+                              No information available
+                            <% } %>
+                          </p></th>
+                    </tr>
+                    <tr>
+                          <th class="artInfoTitle">Culture</th>
+                          <th><p>
+                            <%- paintingInfo[0].creation_place %>
+                            <% if (!paintingInfo[0].creation_place) { %>
+                              No information available
+                            <% } %>
+                          </p></th>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+</div>
+
+<%- include('footer') %>

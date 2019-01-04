@@ -1,0 +1,40 @@
+<div class="sidenav">
+    <a href="/"><img class="logo" src="/logo.png"></img></a>
+    <div class="center regbuttons">
+        <button id="login" class="outlinebutton">Sign in</button>
+        <button id="register" class="outlinebutton">Register</button>
+    </div>
+    <div class="navGroup">
+        <table>
+            <tr class="navTitleAddRow">
+                <th class="navThTitle"><h2 class="sidenavTitle">Featured colors</h2></th>
+                <th class="navThBtn"><button id="searchBtn2" class="navAdd">+</button></th>
+            </tr>
+        </table>
+        <% if(featuredColors.length > 0) { %>
+          <div class="colorButtonsColumn">
+              <% featuredColors.forEach(color => { %>
+                <a href="/search/hex/<%- color %>"><button class="outlinebutton" style="border: 1px solid #<%- color %>">#<%- color %></button></a>
+              <% }); %>
+          </div>
+        <% } else { %>
+            <div class ="navBlank">
+                Looks like you haven't searched any colors recently! Search now.
+            </div>
+        <% } %>
+    </div>
+    <div class="navGroup">
+        <table>
+            <tr class="navTitleAddRow">
+                <th class="navThTitle"><h2 class="sidenavTitle">Featured uploads</h2></th>
+                <th class="navThBtn"><button id="searchBtn3" class="navAdd">+</button></th>
+            </tr>
+        </table>
+          <div class="recentUploadsBlock">
+                  <a href="/search/upload/monalisa/Mona_Lisa"><p>The Mona Lisa</p></a>
+                  <a href="/search/upload/girlwithpearlearring/The_Girl_with_the_Pearl_Earring"><p>The Girl with the Pearl Earring</p></a>
+                  <a href="/search/upload/starrynight/Starry_Night"><p>Starry Night</p></a>
+          </div>
+    </div>
+    <div class="center"><button id="searchBtn4" class="searchButton">Start exploring</button></div>
+</div>

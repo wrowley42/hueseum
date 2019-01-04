@@ -1,0 +1,48 @@
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="loginClose close">&times;</span>
+        <img class="logo logoCenter" src="/logo.png"></img>
+        <form class="registerlogin" action="/login" method="post">
+            <div class="inputBlock">
+                <label for="lusername"> Username </label></br>
+                <input id="lusername" type="text" class="inputtext" name="username"></input>
+            </div>
+            <div class="inputBlock">
+                <label for="lpassword"> Password </label></br>
+                <input id="lpassword" type="password" class="inputtext" name="password"></input>
+            </div>
+            <div class="bigSearchButtonCenter">
+                <input type="submit" class="submitbtn" value="Log in"></input>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("loginModal");
+
+    // Get the button that opens the modal
+    var loginbtn = document.getElementById("login");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("loginClose")[0];
+
+    // When the user clicks the button, open the modal
+    loginbtn.onclick = function() {
+        loginModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        loginModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            loginModal.style.display = "none";
+        }
+    }
+
+</script>

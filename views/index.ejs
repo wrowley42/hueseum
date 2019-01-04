@@ -1,0 +1,59 @@
+<%- include('header') %>
+
+<% if(username) { %>
+    <%- include('sidebar-logged') %>
+<% } else { %>
+    <%- include('sidebar-unlogged') %>
+<% } %>
+
+<%- include('search') %>
+<%- include('register') %>
+<%- include('login') %>
+
+    <div class="main">
+        <div class="libraryBlock">
+            <h1>Library</h1>
+            <% if(username) { %>
+                <% if(userLibrary.length > 0 ) {%>
+                  <div class="favoritesLibrary">
+                        <% userLibrary.forEach(object => { %>
+                          <a href="/painting/<%= object.paintingid %>"><img class="favoritesImage" src="<%= object.imageurl %>"></img></a>
+                        <% }); %>
+                  </div>
+                <% } else { %>
+                <div class="libraryBlank">
+                    Looks like you don't have any saved paintings. Start saving your favorite artworks.
+                </div>
+                <% } %>
+            <% } else { %>
+                <div class="libraryBlank">
+                    Looks like you’re not signed in. Create an account to save your favorite paintings.
+                </div>
+            <% } %>
+        </div>
+        <div class="exploreBlock">
+            <h1>Search for paintings by</h1>
+            <table class="instructions">
+                <tr>
+                    <td class="tableWidth"><img class="instructionsImage" src="/eyedropper.png"></img></td>
+                    <td class="tableWidth"><img class="instructionsImage" src="/upload.png"></img></td>
+                    <td class="tableWidth"><img class="instructionsImage" src="/text.png"></img></td>
+                </tr>
+                <tr>
+                    <td><h2 class="instructionsTitle">Color</h2></td>
+                    <td><h2 class="instructionsTitle">Upload</h2></td>
+                    <td><h2 class="instructionsTitle">Name</h2></td>
+                </tr>
+                <tr>
+                    <td class="instructionsDescription"><p class="instructionsDescriptionWidth">Use our color picker or enter a hex code</p></td>
+                    <td class="instructionsDescription"><p class="instructionsDescriptionWidth">Load an image of your choice</p></td>
+                    <td class="instructionsDescription"><p class="instructionsDescriptionWidth">Search our database of paintings</p></td>
+                </tr>
+            </table>
+            <div class="bigSearchButtonCenter">
+                <button id="searchBtn" class="bigSearchButton">Begin your search</button>
+            </div>
+        </div>
+    </div>
+
+<%- include('footer') %>

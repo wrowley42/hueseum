@@ -1,0 +1,95 @@
+<%- include('header') %>
+
+<% if(username) { %>
+    <%- include('sidebar-logged') %>
+<% } else { %>
+    <%- include('sidebar-unlogged') %>
+<% } %>
+
+<%- include('search') %>
+<%- include('register') %>
+<%- include('login') %>
+
+<div class="main">
+    <h1>Search results for '<%- key %>'</h1>
+    <% if(hexkey && !thresholdkey){ %>
+    <div class="filterSectionHex filterOptions">
+        <div class="filterOptionLocation">
+            <h2 class="filterOptionsTitle">Filter by location</h2>
+            <form class="filterSearch" action="/hexcodeFilterSearch" method="post">
+              <input hidden style="display:none" type="text" class="inputtext" name="hexcode" value="<%- key %>"></input>
+              <select name="filter" onchange="this.form.submit()">
+                  <option disabled selected value="">Select a location</option>
+                  <% locationPlaceArray.forEach(location => { %>
+                      <option value="<%- location %>"><%- location %></option>
+                  <% }); %>
+              </select>
+            </form>
+        </div>
+        <div class="filterOptionThresh">
+        <h2 class="filterOptionsTitle">Change color sensitivity</h2>
+            <form  class="slidecontainer" action="/hexcodeFilterSearch" method="post">
+                <input hidden style="display:none" type="text" class="inputtext" name="hexcode" value="<%- key %>"></input>
+                <input onchange="this.form.submit()" type="range" min="1" max="60" name="threshold" value="15" class="slider" id="cutoffRange">
+            </form>
+        </div>
+    </div>
+    <% } %>
+    <% if(thresholdkey){ %>
+    <div class="filterSectionThresh filterOptions">
+        <div class="filterOptionLocation">
+            <h2 class="filterOptionsTitle">Filter by location</h2>
+            <form class="filterSearch" action="/hexcodeFilterSearch" method="post">
+              <input hidden style="display:none" type="text" class="inputtext" name="hexcode" value="<%- key %>"></input>
+              <input hidden style="display:none" type="text" class="inputtext" name="threshold" value="<%- thresholdkey %>"></input>
+              <select name="filter" onchange="this.form.submit()">
+                  <option disabled selected value="">Select a location</option>
+                  <% locationPlaceArray.forEach(location => { %>
+                      <option value="<%- location %>"><%- location %></option>
+                  <% }); %>
+              </select>
+            </form>
+        </div>
+        <div class="filterOptionThresh">
+        <h2 class="filterOptionsTitle">Change color sensitivity</h2>
+            <form  class="slidecontainer" action="/hexcodeFilterSearch" method="post">
+                <input hidden style="display:none" type="text" class="inputtext" name="hexcode" value="<%- key %>"></input>
+                <input onchange="this.form.submit()" type="range" min="1" max="60" name="threshold" value="<%- thresholdkey %>" class="slider" id="cutoffRange">
+            </form>
+        </div>
+    </div>
+    <% } %>
+    <% if(textkey){ %>
+
+      <div class="filterSectionText filterOptions">
+          <div class="filterOptionLocation">
+              <h2 class="filterOptionsTitle">Filter by location</h2>
+              <form class="filterSearch" action="/hexcodeFilterSearch" method="post">
+                <input hidden style="display:none" type="text" class="inputtext" name="textkey" value="<%- key %>"></input>
+                <select name="filter" onchange="this.form.submit()">
+                    <option disabled selected value="">Select a location</option>
+                    <% locationPlaceArray.forEach(location => { %>
+                        <option value="<%- location %>"><%- location %></option>
+                    <% }); %>
+                </select>
+              </form>
+          </div>
+      </div>
+    <% } %>
+    <div class="searchResultsDiv">
+        <% if(searchResults.length > 0){ %>
+            <% searchResults.forEach(artInfo => { %>
+              <div class="artTitleResult">
+                <div class="squareImage" style="border-bottom: 6px solid #<%- key %>"><a href="/painting/<%- artInfo.painting_id %>"><img class="artResult" src="<%= artInfo.image_url %>"></img></a></div>
+                <p class="artTitleSearchResult"><%- artInfo.title %></p>
+              </div>
+            <% }); %>
+        <% } else { %>
+            <div class="libraryBlank">No search results</div>
+        <% } %>
+    </div>
+
+</div>
+
+
+<%- include('footer') %>
